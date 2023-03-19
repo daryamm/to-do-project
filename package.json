@@ -7,11 +7,16 @@
     "build": "parcel build"
   },
   "devDependencies": {
-    "parcel": "^2.8.3"
+    "parcel": "^2.8.3",
+    "process": "^0.11.10"
   },
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/daryamm/to-do-project.git",
   "author": "daryamm <dash9696@list.ru>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }
