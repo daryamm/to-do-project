@@ -1,9 +1,9 @@
 // import { Task } from './components/Task'
 export function App() {
   return (
-    <div className='h-screen bg-gray-200 text-base'>
-      <div className='container mx-auto max-w-xl rounded-2xl bg-white'>
-        <div className='flex rounded bg-blue-50 py-2'>
+    <div className='flex h-screen items-center justify-center bg-gray-200 text-base'>
+      <div className='container mx-auto max-w-xl rounded bg-white'>
+        <form className='flex rounded bg-blue-50 py-2'>
           <input
             className='m-5 h-12 w-full rounded border border-gray-300 py-2 px-3'
             placeholder='Новая задача...'
@@ -16,75 +16,7 @@ export function App() {
               />
             </svg>
           </button>
-        </div>
-        <div>
-          <label className='m-5 mb-4 mt-6 flex items-center rounded border border-gray-300 py-4 px-3'>
-            <input
-              type='checkbox'
-              // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
-              className='h-4 w-4 rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 focus:ring-offset-0'
-            />
-            <span className='ml-4 text-sm font-medium text-black'>Вывести список задач </span>
-          </label>
-        </div>
-
-        <div>
-          <label className='m-5 mb-4 mt-6 flex items-center rounded border border-gray-300 py-4 px-3'>
-            <input
-              type='checkbox'
-              // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
-              className='h-4 w-4 rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 focus:ring-offset-0'
-            />
-            <span className='ml-4 text-sm font-medium text-black'>Сделать форму добавления задач</span>
-          </label>
-        </div>
-
-        <div>
-          <label className='m-5 mb-4 mt-6 flex items-center rounded border border-gray-300 py-4 px-3'>
-            <input
-              type='checkbox'
-              // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
-              className='h-4 w-4 rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 focus:ring-offset-0'
-              checked
-            />
-            <span className='ml-4 text-sm font-medium text-gray-400'>Разбить верстку на React компоненты</span>
-          </label>
-        </div>
-        <div>
-          <label className='m-5 mb-4 mt-6 flex items-center rounded border border-gray-300 py-4 px-3'>
-            <input
-              type='checkbox'
-              // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
-              className='h-4 w-4 rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 focus:ring-offset-0'
-              checked
-            />
-            <span className='ml-4 text-sm font-medium text-gray-400'> Сверстать макет из Figma </span>
-          </label>
-        </div>
-        <div>
-          <label className='m-5 mb-4 mt-6 flex items-center rounded border border-gray-300 py-4 px-3'>
-            <input
-              type='checkbox'
-              // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
-              className='h-4 w-4 rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 focus:ring-offset-0'
-              checked
-            />
-            <span className='ml-4 text-sm font-medium text-gray-400'>Добавить Tailwind CSS в проект</span>
-          </label>
-        </div>
-        <div>
-          <label className='m-5 mb-4 mt-6 flex items-center rounded border border-gray-300 py-4 px-3'>
-            <input
-              type='checkbox'
-              // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
-              className='h-4 w-4 rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 focus:ring-offset-0
-'
-              checked
-            />
-            <span className='ml-4 text-sm font-medium text-gray-400'>Развернуть React приложение через Parcel</span>
-          </label>
-        </div>
-        <div className='my-6 flex justify-center pb-5 text-sm text-gray-400'> Сделано 4 из 6 </div>
+        </form>
       </div>
     </div>
   )
