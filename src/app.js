@@ -44,8 +44,13 @@ export function App() {
           </form>
           <div>
             {tasks.map((plan) => (
-              <Task key={plan.value} title={plan.title} />
+              <Task key={plan.id} title={plan.title} />
             ))}
+          </div>
+          <div className='my-6 flex justify-center pb-5 text-sm text-gray-400'>
+            {' '}
+            {tasks.length <= 0 && <p> Задач нет </p>}
+            {tasks.length > 0 && <p> Сделано x из {tasks.length} </p>}
           </div>
         </div>
       </div>
