@@ -1,19 +1,29 @@
 import React, { useState } from 'react'
 import { Task } from './components/Task'
-// import { Header } from './components/Header'
+
+// import { Form } from './components/Forms'
 
 export function App() {
   const [tasks, setTasks] = useState([])
+  const [completed, setCompleted] = useState([])
   const [taskName, setTaskName] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // if (!taskName) return
+    if (!taskName) return
 
     setTasks([...tasks, taskName])
 
     setTaskName('')
+  }
+
+  const handleCompleted = (tasks, isCompleted = false) => {
+    if (isCompleted) {
+      setCompleted([...completed, tasks])
+    } else {
+      setCompleted(completed.filter((title) => title !== tasks))
+    }
   }
 
   return (
@@ -43,14 +53,18 @@ export function App() {
             </button>
           </form>
           <div>
-            {tasks.map((plan) => (
-              <Task key={plan.id} title={plan.title} />
+            {tasks.map((title, index) => (
+              <Task key={index} title={title} onCompleted={() => handleCompleted()} />
             ))}
           </div>
-          <div className='my-6 flex justify-center pb-5 text-sm text-gray-400'>
-            {' '}
+          <div className='mt-6 flex items-center justify-center pb-5 text-sm text-gray-400'>
             {tasks.length <= 0 && <p> Задач нет </p>}
-            {tasks.length > 0 && <p> Сделано x из {tasks.length} </p>}
+            {tasks.length > 0 && (
+              <p>
+                {' '}
+                Сделано {completed.length} из {tasks.length}{' '}
+              </p>
+            )}
           </div>
         </div>
       </div>
