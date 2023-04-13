@@ -1,36 +1,29 @@
 import React, { useState } from 'react'
+import { Form } from './components/Form'
 import { Task } from './components/Task'
-
-// import { Form } from './components/Forms'
 
 export function App() {
   const [tasks, setTasks] = useState([])
-  const [completed, setCompleted] = useState([])
-  const [taskName, setTaskName] = useState('')
+  // const [completed, setCompleted] = useState([])
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    if (!taskName) return
-
+  const handleSubmit = (taskName) => {
     setTasks([...tasks, taskName])
-
-    setTaskName('')
   }
 
-  const handleCompleted = (tasks, isCompleted = false) => {
-    if (isCompleted) {
-      setCompleted([...completed, tasks])
-    } else {
-      setCompleted(completed.filter((title) => title !== tasks))
-    }
-  }
+  // const handleCompleted = (tasks, isCompleted = false) => {
+  //   if (isCompleted) {
+  //     setCompleted([...completed, tasks])
+  //   } else {
+  //     setCompleted(completed.filter((title) => title !== tasks))
+  //   }
+  // }
 
   return (
     <div className='flex h-screen items-center justify-center bg-gray-200 text-base'>
       <div className='container mx-auto max-w-xl rounded bg-white'>
         <div>
-          <form onSubmit={handleSubmit} className='flex rounded bg-blue-50 py-2'>
+          <Form onSubmit={handleSubmit} />
+          {/* <form onSubmit={handleSubmit} className='flex rounded bg-blue-50 py-2'>
             <input
               type='text'
               className='m-5 h-12 w-full rounded border border-gray-300 py-2 px-3'
@@ -51,20 +44,15 @@ export function App() {
                 />
               </svg>
             </button>
-          </form>
+          </form> */}
           <div>
             {tasks.map((title, index) => (
-              <Task key={index} title={title} onCompleted={() => handleCompleted()} />
+              <Task key={index} title={title} />
             ))}
           </div>
           <div className='mt-6 flex items-center justify-center pb-5 text-sm text-gray-400'>
             {tasks.length <= 0 && <p> Задач нет </p>}
-            {tasks.length > 0 && (
-              <p>
-                {' '}
-                Сделано {completed.length} из {tasks.length}{' '}
-              </p>
-            )}
+            {tasks.length > 0 && <p> {/* Сделано {completed.length} из {tasks.length}{' '} */}</p>}
           </div>
         </div>
       </div>

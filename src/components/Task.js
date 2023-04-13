@@ -1,21 +1,21 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 
-export const Task = ({ title, onCompleted }) => {
-  const [checked, setChecked] = useState([])
+export const Task = ({ title }) => {
+  // const [checked, setChecked] = useState([])
   // const [checked, setChecked] = useState(true)
 
-  const handleChange = (e) => {
-    setChecked(e.target.checked)
+  // const handleChange = (e) => {
+  //   setChecked(e.target.checked)
 
-    onCompleted(e.target.checked)
-  }
+  //   onCompleted(e.target.checked)
+  // }
 
   return (
     <div>
       <label className='m-5 mb-4 mt-6 flex items-center space-x-4  rounded border border-gray-300 py-4 px-3'>
         <input
-          onChange={handleChange}
-          checked={checked}
+          // onChange={handleChange}
+          // checked={checked}
           type='checkbox'
           className='h-4 w-4 shrink-0 rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-offset-0'
         />
