@@ -1,26 +1,27 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 
-export const Task = ({ title }) => {
-  // const [checked, setChecked] = useState([])
-  // const [checked, setChecked] = useState(true)
+export const Task = ({ title, onComplete, complete = false, onRemove }) => {
+  const [checked, setChecked] = useState(() => complete)
 
-  // const handleChange = (e) => {
-  //   setChecked(e.target.checked)
+  const handleChange = (e) => {
+    setChecked(e.target.checked)
 
-  //   onCompleted(e.target.checked)
-  // }
+    if (typeof onComplete === 'function') {
+      onComplete(e.target.checked)
+    }
+  }
 
   return (
     <div>
       <label className='m-5 mb-4 mt-6 flex items-center space-x-4  rounded border border-gray-300 py-4 px-3'>
         <input
-          // onChange={handleChange}
-          // checked={checked}
+          onChange={handleChange}
+          checked={checked}
           type='checkbox'
           className='h-4 w-4 shrink-0 rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-offset-0'
         />
         <span className='ml-4 grow text-sm font-medium text-black'>{title}</span>
-        <button size='small' className='shrink-0 text-gray-500'>
+        <button onClick={onRemove} type='button' size='small' className='shrink-0 text-gray-500'>
           <svg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path
               d='M6 18L18 6M6 6L18 18'
