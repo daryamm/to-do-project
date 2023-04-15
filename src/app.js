@@ -3,11 +3,18 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { Form } from './components/Form'
 import { TaskList } from './components/TaskList'
+import { Error } from './components/Error'
 
 export function App() {
   const [tasks, setTasks] = useState([])
+  const [error, setError] = useState('')
 
   const handleSubmit = (taskName) => {
+    if (!taskName) {
+      setError('Enter text')
+      return
+    }
+
     const task = {
       id: uuidv4(),
       title: taskName,
@@ -36,6 +43,7 @@ export function App() {
       <div className='container mx-auto max-w-xl rounded bg-white'>
         <div>
           <Form onSubmit={handleSubmit} />
+          <Error message={error} onClose={() => setError('')} />
           <TaskList value={tasks} onRemoveItem={handleRemoveItem} onComplete={handleCompleted} />{' '}
           <div className='mt-6 flex items-center justify-center pb-5 text-sm text-gray-400'>
             {tasks.length <= 0 && <p> Задач нет </p>}
