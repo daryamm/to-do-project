@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { Form } from './components/Form'
 import { TaskList } from './components/TaskList'
 import { Error } from './components/Error'
+import { Counter } from './components/Counter'
 
 export function App() {
   const [tasks, setTasks] = useState([])
@@ -38,17 +39,24 @@ export function App() {
     )
   }
 
+  const totalCount = useMemo(() => tasks.length, [tasks])
+  const completedCount = useMemo(() => tasks.reduce((sum, current) => (current.complete ? sum + 1 : sum), 0), [tasks])
+
+  const memoCounter = useMemo(
+    () => <Counter totalCount={totalCount} completedCount={completedCount} />,
+    [totalCount, completedCount]
+  )
+
+  const memoError = useMemo(() => <Error message={error} onClose={() => setError('')} />, [error])
+
   return (
     <div className='flex h-screen items-center justify-center bg-gray-200 text-base'>
       <div className='container mx-auto max-w-xl rounded bg-white'>
         <div>
           <Form onSubmit={handleSubmit} />
-          <Error message={error} onClose={() => setError('')} />
-          <TaskList value={tasks} onRemoveItem={handleRemoveItem} onComplete={handleCompleted} />{' '}
-          <div className='mt-6 flex items-center justify-center pb-5 text-sm text-gray-400'>
-            {tasks.length <= 0 && <p> Задач нет </p>}
-            {tasks.length > 0 && <p> Сделано из {tasks.length} </p>}
-          </div>
+          {memoError}
+          <TaskList value={tasks} onRemoveItem={handleRemoveItem} onComplete={handleCompleted} />
+          {memoCounter}
         </div>
       </div>
     </div>
